@@ -1204,6 +1204,10 @@ TASK_FUNCTIONS = {
 
 available_functions = [{"name": name, "description": task["description"], "parameters": task["parameters"]} for name, task in TASK_FUNCTIONS.items()]
 
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+
 @app.post("/run")
 async def process_task(task: str):
     """API endpoint to process user requests dynamically using OpenAI function calling."""
